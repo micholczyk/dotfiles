@@ -6,79 +6,79 @@
 
 [alias]
 
-    # Push changes.
-    pu = push
+	# Push changes.
+	pu = push
 
-    # View abbrev. SHA, description, and history graph of the latest 20 commits
-    l = log --oneline --pretty=oneline -n 20 --graph --abbrev-commit
+	# View abbrev. SHA, description, and history graph of the latest 20 commits
+	l = log --oneline --pretty=oneline -n 20 --graph --abbrev-commit
 
-    # View the abbrev. SHA, relative time, commiter email and commit message
-    # of all commits.
-    ll = log --oneline --pretty=format:'%h, %ce %cr : %s' --graph
+	# View the abbrev. SHA, relative time, commiter email and commit message
+	# of all commits.
+	ll = log --oneline --pretty=format:'%h, %ce %cr : %s' --graph
 
-    # Unstage all the changes.
-    unstage = reset HEAD --
-    u = reset HEAD --
+	# Unstage all the changes.
+	unstage = reset HEAD --
+	u = reset HEAD --
 
-    # Add all changes.
-    a = add -A
+	# Add all changes.
+	a = add -A
 
-    # View short status of the current working tree.
-    s = status -s
+	# View short status of the current working tree.
+	s = status -s
 
-    # Show the diff between the latest commit and the current state.
+	# Show the diff between the latest commit and the current state.
 	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
 
-    # Pull in remote changes for the current repository and all its submodules.
+	# Pull in remote changes for the current repository and all its submodules.
 	p = pull --recurse-submodules
 
-    # Clone a repository including all submodules.
+	# Clone a repository including all submodules.
 	c = clone --recursive
 
-    # Add and commit all changes.
-    ca = !git add -A && git commit -av
+	# Add and commit all changes.
+	ca = !git add -A && git commit -av
 
-    # Amend the currently staged files to the latest commit
+	# Amend the currently staged files to the latest commit
 	amend = commit --amend --reuse-message=HEAD
 	am = commit --amend --reuse-message=HEAD
 
-    # Switch to a branch, creating it if necessary
+	# Switch to a branch, creating it if necessary
 	go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
 
-    # Remove branches that have already been merged with master
+	# Remove branches that have already been merged with master
 	# a.k.a. ‘delete merged’.
 	dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
 
-    # Alias to make configuration changing easier.
+	# Alias to make configuration changing easier.
 	cg = config --global
 
-    # View the global configuration.
-    lcg = config --global -l
+	# View the global configuration.
+	lcg = config --global -l
 
-    # View the branches, tags and remotes verbose output.
-    lb = branch -a
-    branches = branch -a
-    lt = tag -l
-    tags = tag -l
-    lr = remote -v
-    remotes = remote -v
+	# View the branches, tags and remotes verbose output.
+	lb = branch -a
+	branches = branch -a
+	lt = tag -l
+	tags = tag -l
+	lr = remote -v
+	remotes = remote -v
 
-    # List contributors with number of commits
+	# List contributors with number of commits
 	contributors = shortlog --summary --numbered
 
-    # List aliases.
-    aliases = config --get-regexp alias
-    la = config --get-regexp alias
+	# List aliases.
+	aliases = config --get-regexp alias
+	la = config --get-regexp alias
 
 [core]
 
 	editor = vim
 
-    # Treat spaces before tabs and all kinds of trailing whitespace as an error.
+	# Treat spaces before tabs and all kinds of trailing whitespace as an error.
 	# [default] trailing-space: looks for spaces at the end of a line.
 	# [default] space-before-tab: looks for spaces before tabs.
 	whitespace = space-before-tab,-indent-with-non-tab,trailing-space
 
 [apply]
 
-    whitespace = fix
+	whitespace = fix
