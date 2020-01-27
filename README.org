@@ -1,12 +1,14 @@
 #+TITLE: system-dots
 
 * Workflow information:
-- *OS:* Pop!_OS 19.04 (Linux)
+- *OS:* Pop!_OS (Linux)
 - *Shell:* bash
 - *Text editor(s):* vim, Doom Emacs
 
 * Method & usage:
+
 /Sources:/ [[https://news.ycombinator.com/item?id=11070797][this HackerNews comment by StreakyCobra]] and [[https://www.atlassian.com/git/tutorials/dotfiles][this tutorial]].
+
 ** Initialize the dotfiles repository.
 
 #+BEGIN_SRC bash
