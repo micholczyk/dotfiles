@@ -25,7 +25,7 @@
 (setq minions-mode-line-lighter "◎")
 
 ; Tabs
-(setq indent-tabs-mode t)
+(setq-default indent-tabs-mode t)
 (setq tab-always-indent t)
 (setq electric-indent-inhibit t)
 ;; WARNING: This will change your life

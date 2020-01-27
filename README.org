@@ -1,0 +1,77 @@
+#+TITLE: DOTS
+
+* Usage:
+/Sources:/ [[https://news.ycombinator.com/item?id=11070797][this HackerNews comment by StreakyCobra]] and [[https://www.atlassian.com/git/tutorials/dotfiles][this tutorial]].
+** Initialize the dotfiles repository.
+
+#+BEGIN_SRC bash
+git init --bare $HOME/.dots
+alias dots='/usr/bin/git --git-dir=$HOME/.dots --work-tree=$HOME'
+dots config --local status.showUntrackedFiles no
+#+END_SRC
+Creates a hidden dotfiles directory in the HOME directory and initializes it as
+a bare git repository. Here our dotfiles will be backed up. We also tell git to
+only consider files from now on (this prevents git from adding everything in our
+home directory to the repository).
+
+** Interacting with the repository.
+
+In order to manipulate the repository we need to use the alias we created, for
+example:
+#+BEGIN_SRC bash
+dots add .vimrc
+dots commit -m "Added .vimrc"
+dots push
+#+END_SRC
+_All the regular git commands/aliases work with this command._ I have this alias
+in my .bash_aliases file. If you don't use .bash_aliases, or use a different
+shell, I suggest adding it to your shell configuration file (replace .bashrc
+with whatever your shell sources):
+#+BEGIN_SRC bash
+echo "alias dots='/usr/bin/git --git-dir=$HOME/.dots --work-tree=$HOME'" >> $HOME/.bashrc
+#+END_SRC
+
+** Install the dotfiles.
+
+Installing the dotfiles on a new machine is a bit more complicated. There's a
+script available in the scripts directory.
+
+**Script installation:**
+#+BEGIN_SRC bash
+git clone https://github.com/micholczyk/system-dots $HOME/.dots_temp
+chmod +x $HOME/.dots_temp/scripts/system-dots-install.sh
+./$HOME/.dots_temp/scripts/system-dots-install.sh
+rm -rf $HOME/.dots_temp
+#+END_SRC
+
+**Manual installation:**
+#+BEGIN_SRC bash
+# clone the repository
+git clone --bare https://github.com/micholczyk/system-dots $HOME/.dots
+alias dots='/usr/bin/git --git-dir=$HOME/.dots --work-tree=$HOME'
+cd $HOME
+echo ".dots" >> .gitignore # avoid weird recursion problems
+dots checkout # this might fail
+#+END_SRC
+If the checkout fails you have some files overlapping with my dotfiles, in this
+case back them up and remove (move to another directory):
+#+BEGIN_SRC bash
+mkdir -p .dots-backup
+dots checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {}.dots-backup/{}
+#+END_SRC
+Then run checkout again and finish the installation by setting the
+showUntrackedFiles flag.
+#+BEGIN_SRC bash
+dots checkout
+dots config --local status.showUntrackedFiles no
+#+END_SRC
+
+You should be able to manipulate the directory as described and your
+dotfiles should be installed now.
+
+* Todo:
+** [ ] Choose files to backup.
+** [ ] Write a README (documentation).
+*** [X] How the method works, credit.
+*** [ ] Individual dotfiles docs.
+** [X] Fix the installation script.

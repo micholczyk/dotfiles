@@ -38,7 +38,6 @@ alias python2="python2"
 alias la="ls -la"
 alias ll="ls -l"
 alias gt="cd $HOME/git/"
-alias dot="cd $HOME/git/dotfiles"
 
 # dotfiles management
 alias dots='/usr/bin/git --git-dir=$HOME/.dots/ --work-tree=$HOME'
