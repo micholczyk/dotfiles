@@ -1,6 +1,11 @@
 #+TITLE: system-dots
 
-* Usage:
+* Workflow information:
+- *OS:* Pop!_OS 19.04 (Linux)
+- *Shell:* bash
+- *Text editor(s):* vim, Doom Emacs
+
+* Method & usage:
 /Sources:/ [[https://news.ycombinator.com/item?id=11070797][this HackerNews comment by StreakyCobra]] and [[https://www.atlassian.com/git/tutorials/dotfiles][this tutorial]].
 ** Initialize the dotfiles repository.
 
@@ -23,7 +28,7 @@ dots add .vimrc
 dots commit -m "Added .vimrc"
 dots push
 #+END_SRC
-_All the regular git commands/aliases work with this command._ I have this alias
+*All the regular git commands/aliases work with this command.* I have this alias
 in my .bash_aliases file. If you don't use .bash_aliases, or use a different
 shell, I suggest adding it to your shell configuration file (replace .bashrc
 with whatever your shell sources):
@@ -68,10 +73,3 @@ dots config --local status.showUntrackedFiles no
 
 You should be able to manipulate the directory as described and your
 dotfiles should be installed now.
-
-* To-do:
-** TODO Choose files to backup.
-** TODO Write a README (documentation).
-*** DONE How the method works, credit.
-*** TODO Individual dotfiles docs.
-** DONE Fix the installation script.
