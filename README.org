@@ -1,4 +1,4 @@
-#+TITLE: DOTS
+#+TITLE: system-dots
 
 * Usage:
 /Sources:/ [[https://news.ycombinator.com/item?id=11070797][this HackerNews comment by StreakyCobra]] and [[https://www.atlassian.com/git/tutorials/dotfiles][this tutorial]].
@@ -36,7 +36,7 @@ echo "alias dots='/usr/bin/git --git-dir=$HOME/.dots --work-tree=$HOME'" >> $HOM
 Installing the dotfiles on a new machine is a bit more complicated. There's a
 script available in the scripts directory.
 
-**Script installation:**
+*Script installation:*
 #+BEGIN_SRC bash
 git clone https://github.com/micholczyk/system-dots $HOME/.dots_temp
 chmod +x $HOME/.dots_temp/scripts/system-dots-install.sh
@@ -44,7 +44,7 @@ chmod +x $HOME/.dots_temp/scripts/system-dots-install.sh
 rm -rf $HOME/.dots_temp
 #+END_SRC
 
-**Manual installation:**
+*Manual installation:*
 #+BEGIN_SRC bash
 # clone the repository
 git clone --bare https://github.com/micholczyk/system-dots $HOME/.dots
@@ -69,9 +69,9 @@ dots config --local status.showUntrackedFiles no
 You should be able to manipulate the directory as described and your
 dotfiles should be installed now.
 
-* Todo:
-** [ ] Choose files to backup.
-** [ ] Write a README (documentation).
-*** [X] How the method works, credit.
-*** [ ] Individual dotfiles docs.
-** [X] Fix the installation script.
+* To-do:
+** TODO Choose files to backup.
+** TODO Write a README (documentation).
+*** DONE How the method works, credit.
+*** TODO Individual dotfiles docs.
+** DONE Fix the installation script.
