@@ -43,10 +43,9 @@ echo "alias dots='/usr/bin/git --git-dir=$HOME/.dots --work-tree=$HOME'" >> $HOM
 Installing the dotfiles on a new machine is a bit more complicated. There's a
 script available in the scripts directory.
 
-*Script installation:*
-
 Requires GNU Parallel (should be in your distribution repository).
 
+*Script installation:*
 #+BEGIN_SRC bash
 git clone https://github.com/micholczyk/system-dots $HOME/.dots_temp
 chmod +x $HOME/.dots_temp/scripts/system-dots-install.sh
@@ -60,14 +59,14 @@ rm -rf $HOME/.dots_temp
 git clone --bare https://github.com/micholczyk/system-dots $HOME/.dots
 alias dots='/usr/bin/git --git-dir=$HOME/.dots --work-tree=$HOME'
 cd $HOME
-echo ".dots" >> .gitignore # avoid weird recursion problems
+echo ".dots" > .gitignore # avoid weird recursion problems
 dots checkout # this might fail
 #+END_SRC
 If the checkout fails you have some files overlapping with my dotfiles, in this
 case back them up and remove (move to another directory):
 #+BEGIN_SRC bash
-mkdir -p .dots-backup
-dots checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {}.dots-backup/{}
+mkdir -p .dots_backup
+dots checkout 2>&1 | cut -d" " -f 1 | tail -n +2 | head -n -2 | awk {'print $1'} | parallel 'mkdir -p $HOME/.dots_backup/{}; mv {} $HOME/.dots_backup/{}'
 #+END_SRC
 Then run checkout again and finish the installation by setting the
 showUntrackedFiles flag.
