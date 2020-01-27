@@ -44,6 +44,9 @@ Installing the dotfiles on a new machine is a bit more complicated. There's a
 script available in the scripts directory.
 
 *Script installation:*
+
+Requires GNU Parallel (should be in your distribution repository).
+
 #+BEGIN_SRC bash
 git clone https://github.com/micholczyk/system-dots $HOME/.dots_temp
 chmod +x $HOME/.dots_temp/scripts/system-dots-install.sh
