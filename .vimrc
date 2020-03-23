@@ -14,7 +14,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
-" plugins go below this line
+" PLUGINS GO BELOW THIS LINE "
 
 " markdown support
 Plugin 'godlygeek/tabular'
@@ -41,7 +41,6 @@ set ruler
 set showmatch
 set ignorecase
 set smartcase
-
 set incsearch
 
 " tabs
@@ -58,16 +57,17 @@ set autoindent
 set laststatus=2
 
 " highlights
-set cursorline
-hi CursorLine ctermfg=3
+"set cursorline
+"hi CursorLine ctermfg=0 ctermbg=8
 hi MatchParen ctermbg=2
 set colorcolumn=80
-hi ColorColumn ctermbg=3
+hi ColorColumn ctermbg=8
 
 " theming
-set t_Co=256
-set background=dark
-colorscheme solarized
+"set t_Co=256
+let &t_ut=''            " for kitty terminal
+"set background=dark
+"colorscheme solarized
 
 " backup
 set noswapfile
