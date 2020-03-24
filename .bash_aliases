@@ -19,6 +19,9 @@ alias v="vim"
 alias grc="vim $HOME/.gitconfig"
 alias g="git"
 
+# kitty
+alias krc="vim $HOME/.config/kitty/kitty.conf"
+
 # apt
 alias install="sudo apt install"
 alias remove="sudo apt remove"
@@ -35,7 +38,7 @@ alias py2="python2"
 alias python2="python2"
 
 # navigation
-alias ls="ls -h"
+alias ls="ls -ph --color=auto"
 alias la="ls -la"
 alias ll="ls -l"
 alias gt="cd $HOME/git/"

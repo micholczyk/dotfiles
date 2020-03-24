@@ -50,6 +50,9 @@ set shiftwidth=4
 set smarttab
 set expandtab
 
+" folding
+set nofoldenable
+
 " indent
 set autoindent
 
