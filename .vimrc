@@ -23,9 +23,6 @@ Plugin 'plasticboy/vim-markdown'
 " indent
 Plugin 'Yggdroot/indentLine'
 
-" theme
-Plugin 'altercation/vim-colors-solarized'
-
 call vundle#end()
 filetype plugin indent on
 
@@ -64,21 +61,19 @@ set laststatus=2
 "hi CursorLine ctermfg=0 ctermbg=8
 hi MatchParen ctermbg=2
 set colorcolumn=80
-hi ColorColumn ctermbg=8
+hi ColorColumn ctermbg=8 ctermfg=3
 
 " theming
 "set t_Co=256
 let &t_ut=''            " for kitty terminal
-"set background=dark
-"colorscheme solarized
 
 " backup
 set noswapfile
 set noundofile
 
-"""""""""""""
-""" OTHER """
-"""""""""""""
+"""""""""
+" OTHER "
+"""""""""
 
 " markdown
 augroup markdown
@@ -94,3 +89,10 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 :autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
+
+""""""""""""
+" MAPPINGS "
+""""""""""""
+
+" disable Ex mode
+nnoremap Q <Nop>

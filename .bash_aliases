@@ -23,13 +23,11 @@ alias g="git"
 alias krc="vim $HOME/.config/kitty/kitty.conf"
 
 # apt
-alias install="sudo apt install"
-alias remove="sudo apt remove"
-alias reinstall="sudo apt reinstall"
-alias update="sudo apt update && sudo apt upgrade"
-alias purge="sudo apt purge ${1} && sudo apt autoremove"
-alias search="apt search"
-alias list="apt list"
+alias install="sudo dnf install"
+alias remove="sudo dnf remove"
+alias update="sudo dnf upgrade"
+alias search="dnf search"
+alias list="dnf list"
 
 # python
 alias py="python3"
@@ -42,6 +40,8 @@ alias ls="ls -ph --color=auto"
 alias la="ls -la"
 alias ll="ls -l"
 alias gt="cd $HOME/git/"
+alias cd..="cd .."
+alias cd-="cd -"
 
 # dotfiles management
 alias dots='/usr/bin/git --git-dir=$HOME/.dots/ --work-tree=$HOME'
