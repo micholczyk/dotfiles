@@ -16,19 +16,23 @@ Plugin 'VundleVim/Vundle.vim'
 
 " PLUGINS GO BELOW THIS LINE "
 
-" markdown support
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
-
-" indent
 Plugin 'Yggdroot/indentLine'
+Plugin 'bling/vim-bufferline'
+Plugin 'ycm-core/YouCompleteMe'
+Plugin 'vim-syntastic/syntastic'
 
 call vundle#end()
 filetype plugin indent on
 
-"""""""""""""""""""""
-""" CONFIGURATION """
-"""""""""""""""""""""
+"""""""""""""""""
+" CONFIGURATION "
+"""""""""""""""""
+
+" sourcing configuration from working dir
+set exrc
+set secure
 
 " linenumbers
 set number
@@ -44,8 +48,8 @@ set incsearch
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
+set noexpandtab
 set smarttab
-set expandtab
 
 " folding
 set nofoldenable
@@ -57,11 +61,10 @@ set autoindent
 set laststatus=2
 
 " highlights
-"set cursorline
-"hi CursorLine ctermfg=0 ctermbg=8
-hi MatchParen ctermbg=2
+hi MatchParen ctermbg=Green
 set colorcolumn=80
-hi ColorColumn ctermbg=8 ctermfg=3
+hi ColorColumn ctermbg=Grey ctermfg=White
+hi Visual ctermbg=Grey ctermfg=White
 
 " theming
 "set t_Co=256
@@ -70,16 +73,6 @@ let &t_ut=''            " for kitty terminal
 " backup
 set noswapfile
 set noundofile
-
-"""""""""
-" OTHER "
-"""""""""
-
-" markdown
-augroup markdown
-    au!
-    au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
-augroup END
 
 " show trailing whitepace and spaces before a tab
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -90,9 +83,42 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 :autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
 
+"""""""""""
+" PLUGINS "
+"""""""""""
+
+" syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_c_checkers=['make','gcc']
+
+"""""""""""""""
+" DEVELOPMENT "
+"""""""""""""""
+
+" C
+let &path.="src/include,/usr/include/AL,"
+set makeprg=make\ -C\ ../build\ -j9
+autocmd FileType c nnoremap <F1> :!clear; gcc -o a.out % && ./a.out<cr>
+autocmd FileType c nnoremap <F2> :!clear; ./a.out<cr>
+
+" Python
+autocmd FileType python nnoremap <F1> :!clear; python %<cr>
+
+" Markdown
+augroup markdown
+    au!
+    au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
+augroup END
+
 """"""""""""
 " MAPPINGS "
 """"""""""""
 
-" disable Ex mode
+" disable ex mode
 nnoremap Q <Nop>

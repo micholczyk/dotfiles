@@ -14,6 +14,7 @@ alias br="source $HOME/.bashrc"
 # vim
 alias vrc="vim $HOME/.vimrc"
 alias v="vim"
+alias vp="vim +PluginInstall +qall"
 
 # git
 alias grc="vim $HOME/.gitconfig"
