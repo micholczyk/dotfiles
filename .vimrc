@@ -65,6 +65,7 @@ hi MatchParen ctermbg=Green
 set colorcolumn=80
 hi ColorColumn ctermbg=Grey ctermfg=White
 hi Visual ctermbg=Grey ctermfg=White
+highlight Comment cterm=italic
 
 " theming
 "set t_Co=256
@@ -96,6 +97,10 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_c_checkers=['make','gcc']
+
+" indentLine
+" apply for tabs instead of spaces
+set list lcs=tab:\.\ 
 
 """""""""""""""
 " DEVELOPMENT "

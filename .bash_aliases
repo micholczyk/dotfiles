@@ -8,7 +8,7 @@ alias s="sudo "
 
 # bash
 alias brc="vim $HOME/.bashrc"
-alias ba="vim $HOME/.bash_aliases"
+alias ba="vim $HOME/.bash_aliases && . $HOME/.bash_aliases"
 alias br="source $HOME/.bashrc"
 
 # vim
@@ -39,6 +39,7 @@ alias python2="python2"
 # navigation
 alias ls="ls -ph --color=auto"
 alias la="ls -la"
+alias l="ls -l"
 alias ll="ls -l"
 alias gt="cd $HOME/git/"
 alias cd..="cd .."
