@@ -7,7 +7,7 @@ alias sudo="sudo "
 alias s="sudo "
 
 # bash
-alias brc="vim $HOME/.bashrc"
+alias brc="vim $HOME/.bashrc && . $HOME/.bashrc"
 alias ba="vim $HOME/.bash_aliases && . $HOME/.bash_aliases"
 alias br="source $HOME/.bashrc"
 

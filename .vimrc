@@ -21,7 +21,6 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'Yggdroot/indentLine'
 Plugin 'bling/vim-bufferline'
 Plugin 'ycm-core/YouCompleteMe'
-Plugin 'vim-syntastic/syntastic'
 
 call vundle#end()
 filetype plugin indent on
@@ -33,6 +32,9 @@ filetype plugin indent on
 " sourcing configuration from working dir
 set exrc
 set secure
+
+" clipboard
+set clipboard=unnamedplus
 
 " linenumbers
 set number
@@ -87,16 +89,6 @@ autocmd BufWinLeave * call clearmatches()
 """""""""""
 " PLUGINS "
 """""""""""
-
-" syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_c_checkers=['make','gcc']
 
 " indentLine
 " apply for tabs instead of spaces
