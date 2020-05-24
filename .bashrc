@@ -2,6 +2,8 @@
 # BASH CONFIGURATION #
 ######################
 
+set -o vi
+
 # Source global definitions
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
@@ -22,8 +24,5 @@ export PATH
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 
-# User specific aliases and functions
-
-# Custom bash prompt via kirsle.net/wizards/ps1.html
 export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 2)\]\u\[$(tput setaf 6)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 8)\]\\$ \[$(tput sgr0)\]"
 #export PS1=" \[\e[00;34m\]Ω \W \[\e[0m\]"

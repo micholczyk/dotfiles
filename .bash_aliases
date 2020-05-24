@@ -50,6 +50,7 @@ alias dots='/usr/bin/git --git-dir=$HOME/.dots/ --work-tree=$HOME'
 
 # find
 alias f="find . -name ${1}"
+alias fl="locate ${1}"
 
 # misc
 alias cl="clear"

@@ -17,4 +17,3 @@ if [ $? = 0 ]; then
 fi
 dots checkout &> /dev/null
 dots config --local status.showUntrackedFiles no
-

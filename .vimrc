@@ -21,6 +21,9 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'Yggdroot/indentLine'
 Plugin 'bling/vim-bufferline'
 Plugin 'ycm-core/YouCompleteMe'
+Plugin 'junegunn/limelight.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 call vundle#end()
 filetype plugin indent on
@@ -38,6 +41,7 @@ set clipboard=unnamedplus
 
 " linenumbers
 set number
+set relativenumber
 set ruler
 
 " matching
@@ -90,9 +94,16 @@ autocmd BufWinLeave * call clearmatches()
 " PLUGINS "
 """""""""""
 
-" indentLine
-" apply for tabs instead of spaces
+" INDENTLINE "
 set list lcs=tab:\.\ 
+
+" LIMELIGHT "
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_priority = -1
+
+"AIRLINE"
+let g:airline_theme='sol'
+"let g:airline#extensions#tabline#enabled = 1
 
 """""""""""""""
 " DEVELOPMENT "
@@ -119,3 +130,6 @@ augroup END
 
 " disable ex mode
 nnoremap Q <Nop>
+
+nmap <Leader>l <Plug>(Limelight)
+xmap <Leader>l <Plug>(Limelight)
