@@ -11,6 +11,9 @@ alias brc="vim $HOME/.bashrc && . $HOME/.bashrc"
 alias ba="vim $HOME/.bash_aliases && . $HOME/.bash_aliases"
 alias br="source $HOME/.bashrc"
 
+# ssh
+alias ssh="kitty +kitten ssh"
+
 # vim
 alias vrc="vim $HOME/.vimrc"
 alias v="vim"
