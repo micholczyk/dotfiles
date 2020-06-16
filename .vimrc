@@ -17,9 +17,12 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
-Plugin 'Yggdroot/indentLine'
-Plugin 'bling/vim-bufferline'
+Plugin 'JamshedVesuna/vim-markdown-preview'
+
 Plugin 'ycm-core/YouCompleteMe'
+Plugin 'Yggdroot/indentLine'
+
+Plugin 'bling/vim-bufferline'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'kien/ctrlp.vim'
@@ -80,7 +83,7 @@ let &t_ut=''            " for kitty terminal
 set noswapfile
 set noundofile
 
-" show trailing whitepace and spaces before a tab
+" show trailing whitespace and spaces before a tab
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
@@ -96,30 +99,34 @@ autocmd BufWinLeave * call clearmatches()
 set list lcs=tab:\.\ 
 
 " LIMELIGHT "
-let g:limelight_conceal_ctermfg = 'gray'
-let g:limelight_priority = -1
+let g:limelight_conceal_ctermfg='gray'
+let g:limelight_priority=-1
 
-"AIRLINE"
+" AIRLINE
 let g:airline_theme='sol'
-"let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#enabled=1
+
+" MARKDOWN
+let g:vim_markdown_auto_insert_bullets=0
+let g:vim_markdown_new_list_item_indent=0
+
+" MARKDOWN PREVIEW
+let vim_markdown_preview_hotkey='<C-m>'
+let vim_markdown_preview_browser='Firefox'
+let vim_markdown_preview_github=1
+let vim_markdown_preview_use_xdg_open=1
 
 """""""""""""""
 " DEVELOPMENT "
 """""""""""""""
 " C
 let &path.="src/include,/usr/include/AL,"
-set makeprg=make\ -C\ ../build\ -j9
+set makeprg='make\ -C\ ../build\ -j9'
 autocmd FileType c nnoremap <F1> :!clear; gcc -o a.out % && ./a.out<CR>
 autocmd FileType c nnoremap <F2> :!clear; ./a.out<CR>
 
 " Python
 autocmd FileType python nnoremap <F1> :!clear; python %<CR>
-
-" Markdown
-augroup markdown
-    au!
-    au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
-augroup END
 
 """"""""""""
 " MAPPINGS "
@@ -137,12 +144,12 @@ nnoremap <C-h> <C-w>h
 """"""""""""""""
 nnoremap <leader>ni :e $NOTES_DIR/index.md<CR>:cd $NOTES_DIR<CR>
 
-let g:ctrlp_map = '<C-p>'
-let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_map='<C-p>'
+let g:ctrlp_cmd='CtrlP'
 if executable('rg')
 	set grepprg=rg\ --color=never\ --vimgrep
-	let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
-	let g:ctrlp_user_caching = 0
+	let g:ctrlp_user_command='rg %s --files --color=never --glob ""'
+	let g:ctrlp_user_caching=0
 endif
 
 command! -nargs=1 Ngrep grep "<args>" -g "*.md" $NOTES_DIR | wincmd p
@@ -150,3 +157,8 @@ nnoremap <leader>nn :Ngrep
 
 command! Vlist botright vertical copen | vertical resize 50
 nnoremap <leader>v :Vlist<CR>
+
+augroup Markdown
+	autocmd!
+	autocmd FileType markdown set tw=79
+augroup END
