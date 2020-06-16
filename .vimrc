@@ -18,9 +18,13 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'JamshedVesuna/vim-markdown-preview'
+Plugin 'chmp/mdnav'
+Plugin 'vim-pandoc/vim-pandoc'
+Plugin 'vim-pandoc/vim-pandoc-syntax'
 
 Plugin 'ycm-core/YouCompleteMe'
 Plugin 'Yggdroot/indentLine'
+Plugin 'tpope/vim-surround'
 
 Plugin 'bling/vim-bufferline'
 Plugin 'vim-airline/vim-airline'
@@ -116,6 +120,12 @@ let vim_markdown_preview_browser='Firefox'
 let vim_markdown_preview_github=1
 let vim_markdown_preview_use_xdg_open=1
 
+" PANDOC
+let g:pandoc#filetypes#handled = ["pandoc", "markdown"]
+let g:pandoc#filetypes#pandoc_markdown = 0
+let g:pandoc#command#autoexec_command = "Pandoc! pdf"
+let g:pandoc#formatting#mode = 'h'
+
 """""""""""""""
 " DEVELOPMENT "
 """""""""""""""
@@ -138,6 +148,7 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
+nnoremap <C-q> <C-w>q
 
 """"""""""""""""
 " NOTES SYSTEM "
@@ -152,12 +163,16 @@ if executable('rg')
 	let g:ctrlp_user_caching=0
 endif
 
-command! -nargs=1 Ngrep grep "<args>" -g "*.md" $NOTES_DIR | wincmd p
+command! -nargs=1 Ngrep grep! "<args>" -ilg "*.md" $NOTES_DIR
 nnoremap <leader>nn :Ngrep 
 
-command! Vlist botright vertical copen | vertical resize 50
+command! -nargs=1 Ngrep grep! "<args>" -ig "*.md" $NOTES_DIR
+nnoremap <leader>nt :Ngrep 
+
+command! Vlist botright vertical copen | vertical resize 60
 nnoremap <leader>v :Vlist<CR>
 
+" This is not really needed anymore as pandoc does the handwrapping instead.
 augroup Markdown
 	autocmd!
 	autocmd FileType markdown set tw=79
