@@ -3,6 +3,7 @@
 ######################
 
 set -o vi
+export NOTES_DIR=$HOME/zettelkasten
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then

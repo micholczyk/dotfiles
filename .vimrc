@@ -1,7 +1,6 @@
 """""""""""""""""""""
 " VIM CONFIGURATION "
 """""""""""""""""""""
-
 """ REQUIRED """
 syntax on
 set nocompatible
@@ -21,9 +20,10 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'Yggdroot/indentLine'
 Plugin 'bling/vim-bufferline'
 Plugin 'ycm-core/YouCompleteMe'
-Plugin 'junegunn/limelight.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-unimpaired'
 
 call vundle#end()
 filetype plugin indent on
@@ -31,7 +31,6 @@ filetype plugin indent on
 """""""""""""""""
 " CONFIGURATION "
 """""""""""""""""
-
 " sourcing configuration from working dir
 set exrc
 set secure
@@ -93,7 +92,6 @@ autocmd BufWinLeave * call clearmatches()
 """""""""""
 " PLUGINS "
 """""""""""
-
 " INDENTLINE "
 set list lcs=tab:\.\ 
 
@@ -108,15 +106,14 @@ let g:airline_theme='sol'
 """""""""""""""
 " DEVELOPMENT "
 """""""""""""""
-
 " C
 let &path.="src/include,/usr/include/AL,"
 set makeprg=make\ -C\ ../build\ -j9
-autocmd FileType c nnoremap <F1> :!clear; gcc -o a.out % && ./a.out<cr>
-autocmd FileType c nnoremap <F2> :!clear; ./a.out<cr>
+autocmd FileType c nnoremap <F1> :!clear; gcc -o a.out % && ./a.out<CR>
+autocmd FileType c nnoremap <F2> :!clear; ./a.out<CR>
 
 " Python
-autocmd FileType python nnoremap <F1> :!clear; python %<cr>
+autocmd FileType python nnoremap <F1> :!clear; python %<CR>
 
 " Markdown
 augroup markdown
@@ -127,9 +124,29 @@ augroup END
 """"""""""""
 " MAPPINGS "
 """"""""""""
-
 " disable ex mode
 nnoremap Q <Nop>
 
-nmap <Leader>l <Plug>(Limelight)
-xmap <Leader>l <Plug>(Limelight)
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
+
+""""""""""""""""
+" NOTES SYSTEM "
+""""""""""""""""
+nnoremap <leader>ni :e $NOTES_DIR/index.md<CR>:cd $NOTES_DIR<CR>
+
+let g:ctrlp_map = '<C-p>'
+let g:ctrlp_cmd = 'CtrlP'
+if executable('rg')
+	set grepprg=rg\ --color=never\ --vimgrep
+	let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+	let g:ctrlp_user_caching = 0
+endif
+
+command! -nargs=1 Ngrep grep "<args>" -g "*.md" $NOTES_DIR | wincmd p
+nnoremap <leader>nn :Ngrep 
+
+command! Vlist botright vertical copen | vertical resize 50
+nnoremap <leader>v :Vlist<CR>
