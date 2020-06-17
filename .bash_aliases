@@ -36,8 +36,6 @@ alias list="dnf list"
 # python
 alias py="python3"
 alias python="python3"
-alias py2="python2"
-alias python2="python2"
 
 # navigation
 alias ls="ls -ph --color=auto"
