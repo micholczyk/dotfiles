@@ -141,9 +141,10 @@ autocmd FileType python nnoremap <F1> :!clear; python %<CR>
 """"""""""""
 " MAPPINGS "
 """"""""""""
-" disable ex mode
+" Disable ex mode.
 nnoremap Q <Nop>
 
+" Move around windows using Ctrl+<hjkl>. Kill window using Ctrl+q.
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
@@ -153,8 +154,7 @@ nnoremap <C-q> <C-w>q
 """"""""""""""""
 " NOTES SYSTEM "
 """"""""""""""""
-nnoremap <C-n>i :e $NOTES_DIR/index.md<CR>:cd $NOTES_DIR<CR>
-
+" Setup the fuzzy finder to use ripgrep.
 let g:ctrlp_map='<C-p>'
 let g:ctrlp_cmd='CtrlP'
 if executable('rg')
@@ -163,12 +163,17 @@ if executable('rg')
 	let g:ctrlp_user_caching=0
 endif
 
+" Go to the index note.
+nnoremap <C-n>i :e $NOTES_DIR/index.md<CR>:cd $NOTES_DIR<CR>
+" Create a new timestamped note in the notes directory.
+command! -nargs=1 NewZettel :execute ":e" $NOTES_DIR . strftime("%d%m%Y%H%M") . "-<args>.md"
+nnoremap <C-n>a :NewZettel 
+" Search for a keyword in the notes directory.
 command! -nargs=1 Ngrep grep! "<args>" -ilg "*.md" $NOTES_DIR
 nnoremap <C-n>n :Ngrep 
-
 command! -nargs=1 NgrepAll grep! "<args>" -ig "*.md" $NOTES_DIR
 nnoremap <C-n>t :NgrepAll 
-
+" Show a list of the previous command's results.
 command! Vlist botright vertical copen | vertical resize 60
 nnoremap <C-n>v :Vlist<CR>
 
@@ -177,3 +182,31 @@ augroup Markdown
 	autocmd!
 	autocmd FileType markdown set tw=79
 augroup END
+
+" Enable spellchecking.
+set spelllang=en_us,pl
+
+" CtrlP function for inserting a markdown link with Ctrl-X.
+function! CtrlPOpenFunc(action, line)
+	if a:action =~ '^h$'
+		" Get the filename
+		let filename = fnameescape(fnamemodify(a:line, ':t'))
+		let filename_wo_timestamp = fnameescape(fnamemodify(a:line, ':t:s/\d+-//'))
+
+		" Close CtrlP
+		call ctrlp#exit()
+		call ctrlp#mrufiles#add(filename)
+
+		" Insert the markdown link to the file in the current buffer
+		let mdlink = "[".filename_wo_timestamp."](".filename.")"
+		put=mdlink
+	else
+		" Use CtrlP's default file opening function
+		call call('ctrlp#acceptfile', [a:action, a:line])
+	endif
+endfunction
+
+let g:ctrlp_open_func = {
+			\ 'files': 'CtrlPOpenFunc',
+			\ 'mru files': 'CtrlPOpenFunc'
+			\ }
