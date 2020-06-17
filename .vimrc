@@ -15,8 +15,8 @@ Plugin 'VundleVim/Vundle.vim'
 
 " PLUGINS GO BELOW THIS LINE "
 
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
+"Plugin 'godlygeek/tabular'
+"Plugin 'plasticboy/vim-markdown'
 Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'chmp/mdnav'
 Plugin 'vim-pandoc/vim-pandoc'
@@ -123,7 +123,7 @@ let vim_markdown_preview_use_xdg_open=1
 " PANDOC
 let g:pandoc#filetypes#handled = ["pandoc", "markdown"]
 let g:pandoc#filetypes#pandoc_markdown = 0
-let g:pandoc#command#autoexec_command = "Pandoc! pdf"
+"let g:pandoc#command#autoexec_command = "Pandoc! pdf"
 let g:pandoc#formatting#mode = 'h'
 
 """""""""""""""
@@ -153,7 +153,7 @@ nnoremap <C-q> <C-w>q
 """"""""""""""""
 " NOTES SYSTEM "
 """"""""""""""""
-nnoremap <leader>ni :e $NOTES_DIR/index.md<CR>:cd $NOTES_DIR<CR>
+nnoremap <C-n>i :e $NOTES_DIR/index.md<CR>:cd $NOTES_DIR<CR>
 
 let g:ctrlp_map='<C-p>'
 let g:ctrlp_cmd='CtrlP'
@@ -164,15 +164,15 @@ if executable('rg')
 endif
 
 command! -nargs=1 Ngrep grep! "<args>" -ilg "*.md" $NOTES_DIR
-nnoremap <leader>nn :Ngrep 
+nnoremap <C-n>n :Ngrep 
 
-command! -nargs=1 Ngrep grep! "<args>" -ig "*.md" $NOTES_DIR
-nnoremap <leader>nt :Ngrep 
+command! -nargs=1 NgrepAll grep! "<args>" -ig "*.md" $NOTES_DIR
+nnoremap <C-n>t :NgrepAll 
 
 command! Vlist botright vertical copen | vertical resize 60
-nnoremap <leader>v :Vlist<CR>
+nnoremap <C-n>v :Vlist<CR>
 
-" This is not really needed anymore as pandoc does the handwrapping instead.
+" This is not really needed anymore as pandoc does the hardwrapping instead.
 augroup Markdown
 	autocmd!
 	autocmd FileType markdown set tw=79
