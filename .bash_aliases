@@ -50,6 +50,7 @@ alias cd-="cd -"
 
 # dotfiles management
 alias dots='/usr/bin/git --git-dir=$HOME/.dots/ --work-tree=$HOME'
+alias dupd='dots add -u && dots commit -m "Updates" && dots push'
 
 # find
 alias f="find . -name ${1}"
