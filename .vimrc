@@ -15,12 +15,13 @@ Plugin 'VundleVim/Vundle.vim'
 
 " PLUGINS GO BELOW THIS LINE "
 
-"Plugin 'godlygeek/tabular'
-"Plugin 'plasticboy/vim-markdown'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'chmp/mdnav'
 Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
+Plugin 'dkarter/bullets.vim'
 
 Plugin 'ycm-core/YouCompleteMe'
 Plugin 'Yggdroot/indentLine'
@@ -41,6 +42,9 @@ filetype plugin indent on
 " sourcing configuration from working dir
 set exrc
 set secure
+
+" enable mouse
+set mouse=a
 
 " clipboard
 set clipboard=unnamedplus
@@ -102,10 +106,6 @@ autocmd BufWinLeave * call clearmatches()
 " INDENTLINE "
 set list lcs=tab:\.\ 
 
-" LIMELIGHT "
-let g:limelight_conceal_ctermfg='gray'
-let g:limelight_priority=-1
-
 " AIRLINE
 let g:airline_theme='sol'
 "let g:airline#extensions#tabline#enabled=1
@@ -121,8 +121,8 @@ let vim_markdown_preview_github=1
 let vim_markdown_preview_use_xdg_open=1
 
 " PANDOC
-let g:pandoc#filetypes#handled = ["pandoc", "markdown"]
-let g:pandoc#filetypes#pandoc_markdown = 0
+"let g:pandoc#filetypes#handled = ["pandoc", "markdown"]
+"let g:pandoc#filetypes#pandoc_markdown = 0
 "let g:pandoc#command#autoexec_command = "Pandoc! pdf"
 let g:pandoc#formatting#mode = 'h'
 
@@ -177,7 +177,6 @@ nnoremap <C-n>t :NgrepAll
 command! Vlist botright vertical copen | vertical resize 60
 nnoremap <C-n>v :Vlist<CR>
 
-" This is not really needed anymore as pandoc does the hardwrapping instead.
 augroup Markdown
 	autocmd!
 	autocmd FileType markdown set tw=79
