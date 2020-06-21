@@ -1,4 +1,4 @@
-#+TITLE: system-dots
+#+TITLE: dotfiles
 
 * Method & usage:
 

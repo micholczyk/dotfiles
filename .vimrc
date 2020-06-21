@@ -27,7 +27,7 @@ Plugin 'ycm-core/YouCompleteMe'
 Plugin 'Yggdroot/indentLine'
 Plugin 'tpope/vim-surround'
 
-Plugin 'bling/vim-bufferline'
+"Plugin 'bling/vim-bufferline'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'kien/ctrlp.vim'
@@ -108,7 +108,7 @@ set list lcs=tab:\.\
 
 " AIRLINE
 let g:airline_theme='sol'
-"let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#enabled=1
 
 " MARKDOWN
 let g:vim_markdown_auto_insert_bullets=0
@@ -177,13 +177,15 @@ nnoremap <C-n>t :NgrepAll
 command! Vlist botright vertical copen | vertical resize 60
 nnoremap <C-n>v :Vlist<CR>
 
-augroup Markdown
+augroup Pandoc
 	autocmd!
-	autocmd FileType markdown set tw=79
+	autocmd FileType pandoc set tw=79
 augroup END
 
 " Enable spellchecking.
 set spelllang=en_us,pl
+" Enable linking filenames with specific lines after colon.
+set isfname-=:
 
 " CtrlP function for inserting a markdown link with Ctrl-X.
 function! CtrlPOpenFunc(action, line)
