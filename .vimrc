@@ -133,6 +133,9 @@ let vim_markdown_preview_use_xdg_open=1
 "let g:pandoc#command#autoexec_command = "Pandoc! pdf"
 let g:pandoc#formatting#mode = 'h'
 
+" SESSIONS
+let g:session_autosave=0
+
 " BEACON
 highlight Beacon ctermbg=6
 
