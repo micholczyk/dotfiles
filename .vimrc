@@ -28,12 +28,17 @@ Plugin 'mattn/emmet-vim'
 Plugin 'ycm-core/YouCompleteMe'
 Plugin 'Yggdroot/indentLine'
 Plugin 'tpope/vim-surround'
+Plugin 'terryma/vim-multiple-cursors'
 
 "Plugin 'bling/vim-bufferline'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'danilamihailov/beacon.nvim'
+Plugin 'takac/vim-hardtime'
+Plugin 'xolox/vim-session'
+Plugin 'xolox/vim-misc'
 
 call vundle#end()
 filetype plugin indent on
@@ -127,6 +132,12 @@ let vim_markdown_preview_use_xdg_open=1
 "let g:pandoc#filetypes#pandoc_markdown = 0
 "let g:pandoc#command#autoexec_command = "Pandoc! pdf"
 let g:pandoc#formatting#mode = 'h'
+
+" BEACON
+highlight Beacon ctermbg=6
+
+" HARDTIME
+let g:hardtime_default_on=1
 
 """""""""""""""
 " DEVELOPMENT "
