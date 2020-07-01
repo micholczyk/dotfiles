@@ -12,6 +12,11 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
+# Source .profile
+if [ -f $HOME/.profile ]; then
+	. $HOME/.profile
+fi
+
 # Source bash aliases
 if [ -f $HOME/.bash_aliases ]; then
     . $HOME/.bash_aliases
