@@ -1,8 +1,0 @@
-# In order for this to work you need to install xcape and change Caps behavior
-# to ctrl in Tweaks (on GNOME).
-
-# Make CapsLock behave as Ctrl when held down.
-setxkbmap -option ctrl:nocaps
-
-# Make quickly pressed Ctrl behave like Escape (so Caps is both!).
-xcape -e 'Control_L=Escape'
