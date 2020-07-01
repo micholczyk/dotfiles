@@ -54,7 +54,7 @@ set secure
 set mouse=a
 
 " clipboard
-set clipboard=unnamedplus
+set clipboard^=unnamed,unnamedplus
 
 " linenumbers
 set number

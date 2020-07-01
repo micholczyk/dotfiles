@@ -18,6 +18,7 @@ alias b="bat"
 alias ssh="kitty +kitten ssh"
 
 # vim
+alias vim="vimx"
 alias vrc="vim $HOME/.vimrc"
 alias v="vim"
 alias vp="vim +PluginInstall +qall"
