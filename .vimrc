@@ -39,6 +39,7 @@ Plugin 'danilamihailov/beacon.nvim'
 Plugin 'takac/vim-hardtime'
 Plugin 'xolox/vim-session'
 Plugin 'xolox/vim-misc'
+Plugin 'tpope/vim-fugitive'
 
 call vundle#end()
 filetype plugin indent on
