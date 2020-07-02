@@ -69,5 +69,5 @@ dots checkout
 dots config --local status.showUntrackedFiles no
 #+END_SRC
 
-You should be able to manipulate the directory as described and the
+You should be able to manipulate with the repository as described and the
 dotfiles should be installed now.

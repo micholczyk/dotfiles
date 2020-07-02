@@ -141,7 +141,7 @@ let g:session_autosave=0
 highlight Beacon ctermbg=6
 
 " HARDTIME
-let g:hardtime_default_on=1
+"let g:hardtime_default_on=1
 
 """""""""""""""
 " DEVELOPMENT "
