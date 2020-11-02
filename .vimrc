@@ -115,7 +115,7 @@ autocmd BufWinLeave * call clearmatches()
 set list lcs=tab:\.\ 
 
 " AIRLINE
-let g:airline_theme='sol'
+let g:airline_theme='papercolor'
 let g:airline#extensions#tabline#enabled=1
 
 " MARKDOWN

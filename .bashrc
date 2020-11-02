@@ -5,7 +5,7 @@
 # My specific settings
 set -o vi
 export NOTES_DIR=$HOME/zettelkasten/
-export BAT_THEME="GitHub"
+export BAT_THEME="ansi-dark"
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
