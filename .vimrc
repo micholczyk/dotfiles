@@ -23,6 +23,7 @@ Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
 Plugin 'dkarter/bullets.vim'
 
+Plugin 'pprovost/vim-ps1'
 Plugin 'mattn/emmet-vim'
 
 Plugin 'ycm-core/YouCompleteMe'
